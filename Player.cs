@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BlackJack
+﻿namespace BlackJack
 {
     public class Player : IPlayer
     {
@@ -36,15 +34,39 @@ namespace BlackJack
         public void PlayerInfo()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"{Name}:\nБаланс: {Balance}");
+            Console.WriteLine($"{Name}:\nБаланс: {Balance}$");
             Console.ResetColor();
         }
         public void BetInfo()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Введите ставку:");
-            Bet = int.Parse(Console.ReadLine());
-            Console.ResetColor();
+            bool isValid = false;
+            while (!isValid)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Введите ставку (число):");
+                string input = Console.ReadLine();
+                Console.ResetColor();
+                if (int.TryParse(input, out int result))
+                {
+                    if (result > Balance)
+                    {
+                        Console.WriteLine("Недостаточно средств!");
+                    }
+                    else if (result <= 0)
+                    {
+                        Console.WriteLine("Ставка должна быть больше нуля!");
+                    }
+                    else
+                    {
+                        Bet = result;
+                        isValid = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка! Нужно ввести целое число цифрами.");
+                }
+            }
         }
         public void UpdatePlayerInfo(IRandom _random)
         {
@@ -56,7 +78,7 @@ namespace BlackJack
             var resultValue = selectedCard.Sum(x => x.Value);
             NumPlayer = resultValue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"{Name}:\nБаланс: {Balance} (-{Bet})");
+            Console.WriteLine($"{Name}:\nБаланс: {Balance}$ (-{Bet}$)");
             foreach (var card in selectedCard)
             {
                 Console.WriteLine($"Ваши карты: {card.Name} ({card.Value})");

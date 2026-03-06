@@ -37,7 +37,7 @@
             if (player.DillerNum > player.NumPlayer && player.DillerNum <= 21)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"{player.Name} lost!\n{player.Name}: {player.Balance} (-{player.Bet})");
+                Console.WriteLine($"{player.Name} lost!\n{player.Name}: {player.Balance}$ (-{player.Bet}$)");
                 Console.ResetColor();
                 player.Balance -= player.Bet;
                 GameOver = true;
@@ -51,7 +51,7 @@
             {
                 player.Balance += player.Bet;
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Диллер проиграл!\n{player.Name}: {player.Balance} (+{player.Bet})");
+                Console.WriteLine($"Диллер проиграл!\n{player.Name}: {player.Balance}$ (+{player.Bet}$)");
                 Console.ResetColor();
                 GameOver = true;
                 CheckGameOver(player, _random, game);
