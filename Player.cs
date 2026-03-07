@@ -4,19 +4,58 @@
     {
         public List<Cards> CardsName { get; set; } =
         [
-            new Cards("J", 5),
-            new Cards("Q", 5),
-            new Cards("K", 5),
-            new Cards("A", 5),
-            new Cards("10", 10),
-            new Cards("9", 9),
-            new Cards("8", 8),
-            new Cards("7", 7),
-            new Cards("6", 6),
-            new Cards("5", 5),
-            new Cards("4", 4),
-            new Cards("3", 3),
-            new Cards("2", 2),
+            new CardWorms("J", 5, ConsoleColor.Red, "♥"),
+            new CardWorms("Q", 5, ConsoleColor.Red, "♥"),
+            new CardWorms ("K", 5, ConsoleColor.Red, "♥"),
+            new CardWorms ("A", 5, ConsoleColor.Red, "♥"),
+            new CardWorms("10", 10, ConsoleColor.Red, "♥"),
+            new CardWorms ("9", 9, ConsoleColor.Red, "♥"),
+            new CardWorms ("8", 8, ConsoleColor.Red, "♥"),
+            new CardWorms ("7", 7, ConsoleColor.Red, "♥"),
+            new CardWorms ("6", 6, ConsoleColor.Red, "♥"),
+            new CardWorms ("5", 5, ConsoleColor.Red, "♥"),
+            new CardWorms ("4", 4, ConsoleColor.Red, "♥"),
+            new CardWorms ("3", 3, ConsoleColor.Red, "♥"),
+            new CardWorms ("2", 2, ConsoleColor.Red, "♥"),
+            new CardClubs("J", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs("Q", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("K", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("A", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs("10", 10, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("9", 9, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("8", 8, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("7", 7, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("6", 6, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("5", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("4", 4, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("3", 3, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("2", 2, ConsoleColor.DarkCyan, "♣"),
+            new CardDiamond("J", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond("Q", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("K", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("A", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond("10", 10, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("9", 9, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("8", 8, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("7", 7, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("6", 6, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("5", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("4", 4, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("3", 3, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("2", 2, ConsoleColor.DarkRed, "♦"),
+            new CardPeaks("J", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks("Q", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("K", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("A", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks("10", 10, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("9", 9, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("8", 8, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("7", 7, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("6", 6, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("5", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("4", 4, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("3", 3, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("2", 2, ConsoleColor.DarkBlue, "♠"),
         ];
         public int Balance { get; set; } = 1000;
         public string? Name { get; set; }
@@ -81,8 +120,11 @@
             Console.WriteLine($"{Name}:\nБаланс: {Balance}$ (-{Bet}$)");
             foreach (var card in selectedCard)
             {
-                Console.WriteLine($"Ваши карты: {card.Name} ({card.Value})");
+                Console.ForegroundColor = card.Suit;
+                Console.WriteLine($"Ваши карты: {card.Name} {card.Symbol} ({card.Value})");
+                Console.ResetColor();
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {resultValue}");
             Console.ResetColor();
         }
@@ -99,8 +141,11 @@
             Console.WriteLine($"{Name}:");
             foreach (var card in selectedCard)
             {
-                Console.WriteLine($"Ваши карты: {card.Name} ({card.Value})");
+                Console.ForegroundColor = card.Suit;
+                Console.WriteLine($"Ваши карты: {card.Name} {card.Symbol} ({card.Value})");
+                Console.ResetColor();
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {NumPlayer}");
             Console.ResetColor();
         }
@@ -116,8 +161,11 @@
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             foreach (var card in selectedCard)
             {
-                Console.WriteLine($"Карты Диллера: {card.Name} ({card.Value})");
+                Console.ForegroundColor = card.Suit;
+                Console.WriteLine($"Карты Диллера: {card.Name} {card.Symbol} ({card.Value})");
+                Console.ResetColor();
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {DillerNum}");
             Console.ResetColor();
         }
@@ -133,8 +181,11 @@
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             foreach (var card in selectedCard)
             {
-                Console.WriteLine($"Карты Диллера: {card.Name} ({card.Value})");
+                Console.ForegroundColor = card.Suit;
+                Console.WriteLine($"Карты Диллера: {card.Name} {card.Symbol} ({card.Value})");
+                Console.ResetColor();
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {DillerNum}");
             Console.ResetColor();
         }
