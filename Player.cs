@@ -118,14 +118,16 @@
             NumPlayer = resultValue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"{Name}:\nБаланс: {Balance}$ (-{Bet}$)");
+            Console.WriteLine("Ваши карты:");
             foreach (var card in selectedCard)
             {
                 Console.ForegroundColor = card.Suit;
-                Console.WriteLine($"Ваши карты: {card.Name} {card.Symbol} ({card.Value})");
+                Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
                 Console.ResetColor();
             }
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"Общее число: {resultValue}");
+            Console.WriteLine($"Общее число: {NumPlayer}");
             Console.ResetColor();
         }
         public void CheckAnswer(IRandom _random)
@@ -139,12 +141,15 @@
             NumPlayer += resultValue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"{Name}:");
+            Console.WriteLine("Ваши карты:");
             foreach (var card in selectedCard)
             {
+
                 Console.ForegroundColor = card.Suit;
-                Console.WriteLine($"Ваши карты: {card.Name} {card.Symbol} ({card.Value})");
+                Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
                 Console.ResetColor();
             }
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {NumPlayer}");
             Console.ResetColor();
@@ -159,12 +164,14 @@
             var resultValue = selectedCard.Sum(x => x.Value);
             DillerNum = resultValue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Карты Диллера:");
             foreach (var card in selectedCard)
             {
                 Console.ForegroundColor = card.Suit;
-                Console.WriteLine($"Карты Диллера: {card.Name} {card.Symbol} ({card.Value})");
+                Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
                 Console.ResetColor();
             }
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {DillerNum}");
             Console.ResetColor();
@@ -179,12 +186,14 @@
             var resultValue = selectedCard.Sum(x => x.Value);
             DillerNum += resultValue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Карты Диллера:");
             foreach (var card in selectedCard)
             {
                 Console.ForegroundColor = card.Suit;
-                Console.WriteLine($"Карты Диллера: {card.Name} {card.Symbol} ({card.Value})");
+                Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
                 Console.ResetColor();
             }
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Общее число: {DillerNum}");
             Console.ResetColor();
