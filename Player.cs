@@ -4,10 +4,10 @@
     {
         public List<Cards> CardsName { get; set; } =
         [
-            new CardWorms("J", 5, ConsoleColor.Red, "♥"),
-            new CardWorms("Q", 5, ConsoleColor.Red, "♥"),
-            new CardWorms ("K", 5, ConsoleColor.Red, "♥"),
-            new CardWorms ("A", 5, ConsoleColor.Red, "♥"),
+            new CardWorms("J", 10, ConsoleColor.Red, "♥"),
+            new CardWorms("Q", 10, ConsoleColor.Red, "♥"),
+            new CardWorms ("K", 10, ConsoleColor.Red, "♥"),
+            new CardWorms ("A", 10, ConsoleColor.Red, "♥"),
             new CardWorms("10", 10, ConsoleColor.Red, "♥"),
             new CardWorms ("9", 9, ConsoleColor.Red, "♥"),
             new CardWorms ("8", 8, ConsoleColor.Red, "♥"),
@@ -17,10 +17,10 @@
             new CardWorms ("4", 4, ConsoleColor.Red, "♥"),
             new CardWorms ("3", 3, ConsoleColor.Red, "♥"),
             new CardWorms ("2", 2, ConsoleColor.Red, "♥"),
-            new CardClubs("J", 5, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs("Q", 5, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("K", 5, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("A", 5, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs("J", 10, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs("Q", 10, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("K", 10, ConsoleColor.DarkCyan, "♣"),
+            new CardClubs ("A", 10, ConsoleColor.DarkCyan, "♣"),
             new CardClubs("10", 10, ConsoleColor.DarkCyan, "♣"),
             new CardClubs ("9", 9, ConsoleColor.DarkCyan, "♣"),
             new CardClubs ("8", 8, ConsoleColor.DarkCyan, "♣"),
@@ -30,10 +30,10 @@
             new CardClubs ("4", 4, ConsoleColor.DarkCyan, "♣"),
             new CardClubs ("3", 3, ConsoleColor.DarkCyan, "♣"),
             new CardClubs ("2", 2, ConsoleColor.DarkCyan, "♣"),
-            new CardDiamond("J", 5, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond("Q", 5, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("K", 5, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("A", 5, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond("J", 10, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond("Q", 10, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("K", 10, ConsoleColor.DarkRed, "♦"),
+            new CardDiamond ("A", 10, ConsoleColor.DarkRed, "♦"),
             new CardDiamond("10", 10, ConsoleColor.DarkRed, "♦"),
             new CardDiamond ("9", 9, ConsoleColor.DarkRed, "♦"),
             new CardDiamond ("8", 8, ConsoleColor.DarkRed, "♦"),
@@ -43,10 +43,10 @@
             new CardDiamond ("4", 4, ConsoleColor.DarkRed, "♦"),
             new CardDiamond ("3", 3, ConsoleColor.DarkRed, "♦"),
             new CardDiamond ("2", 2, ConsoleColor.DarkRed, "♦"),
-            new CardPeaks("J", 5, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks("Q", 5, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("K", 5, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("A", 5, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks("J", 10, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks("Q", 10, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("K", 10, ConsoleColor.DarkBlue, "♠"),
+            new CardPeaks ("A", 10, ConsoleColor.DarkBlue, "♠"),
             new CardPeaks("10", 10, ConsoleColor.DarkBlue, "♠"),
             new CardPeaks ("9", 9, ConsoleColor.DarkBlue, "♠"),
             new CardPeaks ("8", 8, ConsoleColor.DarkBlue, "♠"),
@@ -144,7 +144,6 @@
             Console.WriteLine("Ваши карты:");
             foreach (var card in selectedCard)
             {
-
                 Console.ForegroundColor = card.Suit;
                 Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
                 Console.ResetColor();
@@ -212,7 +211,7 @@
                         if (NumPlayer > 21)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine($"{Name} lost!");
+                            Console.WriteLine($"{Name} lost!\n{Name}: {Balance}$ (-{Bet})$");
                             Console.ResetColor();
                             Balance -= Bet;
                             isGameOver.GameOver = true;
