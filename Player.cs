@@ -2,61 +2,7 @@
 {
     public class Player : IPlayer
     {
-        public List<Cards> CardsName { get; set; } =
-        [
-            new CardWorms("J", 10, ConsoleColor.Red, "♥"),
-            new CardWorms("Q", 10, ConsoleColor.Red, "♥"),
-            new CardWorms ("K", 10, ConsoleColor.Red, "♥"),
-            new CardWorms ("A", 10, ConsoleColor.Red, "♥"),
-            new CardWorms("10", 10, ConsoleColor.Red, "♥"),
-            new CardWorms ("9", 9, ConsoleColor.Red, "♥"),
-            new CardWorms ("8", 8, ConsoleColor.Red, "♥"),
-            new CardWorms ("7", 7, ConsoleColor.Red, "♥"),
-            new CardWorms ("6", 6, ConsoleColor.Red, "♥"),
-            new CardWorms ("5", 5, ConsoleColor.Red, "♥"),
-            new CardWorms ("4", 4, ConsoleColor.Red, "♥"),
-            new CardWorms ("3", 3, ConsoleColor.Red, "♥"),
-            new CardWorms ("2", 2, ConsoleColor.Red, "♥"),
-            new CardClubs("J", 10, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs("Q", 10, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("K", 10, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("A", 10, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs("10", 10, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("9", 9, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("8", 8, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("7", 7, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("6", 6, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("5", 5, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("4", 4, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("3", 3, ConsoleColor.DarkCyan, "♣"),
-            new CardClubs ("2", 2, ConsoleColor.DarkCyan, "♣"),
-            new CardDiamond("J", 10, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond("Q", 10, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("K", 10, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("A", 10, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond("10", 10, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("9", 9, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("8", 8, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("7", 7, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("6", 6, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("5", 5, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("4", 4, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("3", 3, ConsoleColor.DarkRed, "♦"),
-            new CardDiamond ("2", 2, ConsoleColor.DarkRed, "♦"),
-            new CardPeaks("J", 10, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks("Q", 10, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("K", 10, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("A", 10, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks("10", 10, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("9", 9, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("8", 8, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("7", 7, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("6", 6, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("5", 5, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("4", 4, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("3", 3, ConsoleColor.DarkBlue, "♠"),
-            new CardPeaks ("2", 2, ConsoleColor.DarkBlue, "♠"),
-        ];
+        public Cards card { get; set; } = new Cards();
         public int Balance { get; set; } = 1000;
         public string? Name { get; set; }
         public string? Answer { get; set; }
@@ -109,8 +55,8 @@
         }
         public void UpdatePlayerInfo(IRandom _random)
         {
-            int valueCard = _random.Next(2, 2);
-            var selectedCard = CardsName
+            int valueCard = 2;
+            var selectedCard = card.CardsName
                 .OrderBy(x => _random.Next())
                 .Take(valueCard)
                 .ToList();
@@ -121,9 +67,8 @@
             Console.WriteLine("Ваши карты:");
             foreach (var card in selectedCard)
             {
-                Console.ForegroundColor = card.Suit;
+                Console.ForegroundColor = (ConsoleColor)card.Suit;
                 Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
-                Console.ResetColor();
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -132,8 +77,8 @@
         }
         public void CheckAnswer(IRandom _random)
         {
-            int valueCard = _random.Next(1, 1);
-            var selectedCard = CardsName
+            int valueCard = 1;
+            var selectedCard = card.CardsName
                 .OrderBy(x => _random.Next())
                 .Take(valueCard)
                 .ToList();
@@ -144,9 +89,8 @@
             Console.WriteLine("Ваши карты:");
             foreach (var card in selectedCard)
             {
-                Console.ForegroundColor = card.Suit;
+                Console.ForegroundColor = (ConsoleColor)card.Suit;
                 Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
-                Console.ResetColor();
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -155,8 +99,8 @@
         }
         public void DillerInfo(IRandom _random)
         {
-            int valueCard = _random.Next(2, 2);
-            var selectedCard = CardsName
+            int valueCard = 2;
+            var selectedCard = card.CardsName
                 .OrderBy(x => _random.Next())
                 .Take(valueCard)
                 .ToList();
@@ -166,9 +110,8 @@
             Console.WriteLine("Карты Диллера:");
             foreach (var card in selectedCard)
             {
-                Console.ForegroundColor = card.Suit;
+                Console.ForegroundColor = (ConsoleColor)card.Suit;
                 Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
-                Console.ResetColor();
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -177,8 +120,8 @@
         }
         public void UpdateDillerInfo(IRandom _random)
         {
-            int valueCard = _random.Next(1, 1);
-            var selectedCard = CardsName
+            int valueCard = 1;
+            var selectedCard = card.CardsName
                 .OrderBy(x => _random.Next())
                 .Take(valueCard)
                 .ToList();
@@ -188,9 +131,8 @@
             Console.WriteLine("Карты Диллера:");
             foreach (var card in selectedCard)
             {
-                Console.ForegroundColor = card.Suit;
+                Console.ForegroundColor = (ConsoleColor)card.Suit;
                 Console.Write($"{card.Name} {card.Symbol} ({card.Value})\t");
-                Console.ResetColor();
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkYellow;

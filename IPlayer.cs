@@ -2,8 +2,8 @@
 {
     public interface IPlayer
     {
-        public List<Cards> CardsName { get; set; }
-        string Name { get; set; }
+        public Cards card { get; set; }
+        public string Name { get; set; }
         int Balance { get; set; }
         string Answer { get; set; }
         public void GetPlayerInfo();

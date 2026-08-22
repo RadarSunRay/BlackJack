@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BlackJack
 {
-    public interface IGameBoard
+    public class GamePlayerInfo
     {
-        void StartGame(IPlayer player, IRandom random, IIsGameOver gameOver);
+        
     }
 }
